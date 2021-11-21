@@ -2,22 +2,24 @@ import React from "react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import {Menu, Container, Icon} from 'semantic-ui-css';
+import {Menu, Container, Icon} from 'semantic-ui-react';
 
 function Navbar() {
   const router = useRouter();
+
+  const isActive = route => router.pathname === route;
 
   return (
     <Menu fluid borderless>
       <Container>
         <Link href='/login'>
-          <Menu.Item header active={true}>
+          <Menu.Item header active={isActive('/login')}>
             <Icon size='large' name='sign in' />
             Login
           </Menu.Item>
         </Link>
         <Link href='/signup'>
-          <Menu.Item header active={true}>
+          <Menu.Item header active={isActive('/signup')}>
             <Icon size='large' name='signup' />
             Signup
           </Menu.Item>
